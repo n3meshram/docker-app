@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env/
+
+# Docker
+*.tar
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Terraform Variable Files
+*.tfvars
+
+# Sensitive Files
+*.pem
+*.key
+*.crt
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Jenkins
+workspace/
+
+# Environment Files
+.env
+
+# Docker Compose Override
+docker-compose.override.yml
