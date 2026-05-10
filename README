@@ -1,0 +1,487 @@
+# 🚀 Docker Flask CI/CD Application
+
+Production-style Dockerized Flask application with Jenkins CI/CD and Amazon ECR integration.
+
+---
+
+# 📌 Project Overview
+
+This project demonstrates a real-world DevOps workflow using:
+
+- Docker
+- Docker Compose
+- Jenkins Pipeline
+- Amazon ECR
+- Python Flask Application
+- GitHub Integration
+
+The goal of this repository is to understand containerization, image lifecycle management, CI/CD automation, and cloud-native deployment workflows.
+
+---
+
+# 🧠 Architecture
+
+```text
+Developer
+    ↓
+GitHub Repository
+    ↓
+Jenkins Pipeline
+    ↓
+Docker Build
+    ↓
+Amazon ECR
+    ↓
+Container Deployment
+```
+
+---
+
+# ⚙️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Docker | Containerization |
+| Jenkins | CI/CD Automation |
+| Flask | Python Web Application |
+| Amazon ECR | Container Registry |
+| GitHub | Source Code Management |
+| Docker Compose | Multi-container orchestration |
+
+---
+
+# 📂 Project Structure
+
+```text
+docker-app/
+│
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── Jenkinsfile
+├── .gitignore
+└── README.md
+```
+
+---
+
+# 🚀 Features Implemented
+
+## ✅ Dockerized Flask Application
+
+- Flask web application containerized using Docker
+- Lightweight Python slim image
+- Exposed application using port mapping
+
+---
+
+## ✅ Jenkins CI/CD Pipeline
+
+Automated:
+
+- Source code checkout
+- Docker image build
+- Docker image tagging
+- Amazon ECR authentication
+- Docker image push
+
+---
+
+## ✅ Amazon ECR Integration
+
+Implemented:
+
+- Private image registry
+- Versioned Docker image storage
+- AWS CLI authentication
+
+---
+
+## ✅ Docker Compose
+
+Implemented multi-container orchestration using:
+
+- Flask Application Container
+- Redis Container
+
+---
+
+# 🧠 Docker Concepts Covered
+
+This project demonstrates:
+
+- Docker Images
+- Docker Containers
+- Dockerfile
+- Docker Volumes
+- Docker Networking
+- Docker Compose
+- Multi-container communication
+- Container lifecycle
+- Image tagging and versioning
+
+---
+
+# 🔧 Prerequisites
+
+Install the following tools:
+
+| Tool | Version |
+|---|---|
+| Docker | Latest |
+| AWS CLI | Latest |
+| Git | Latest |
+| Jenkins | Latest |
+| Python | Optional |
+
+---
+
+# 🚀 Verify Installation
+
+## Docker
+
+```bash
+docker --version
+```
+
+---
+
+## AWS CLI
+
+```bash
+aws --version
+```
+
+---
+
+## Git
+
+```bash
+git --version
+```
+
+---
+
+# ☁️ AWS Configuration
+
+Configure AWS CLI:
+
+```bash
+aws configure
+```
+
+Provide:
+
+- AWS Access Key
+- AWS Secret Key
+- Region
+- Output format
+
+Example:
+
+```text
+Region: ap-south-1
+Output: json
+```
+
+---
+
+# 📥 Clone Repository
+
+```bash
+git clone https://github.com/n3meshram/docker-app.git
+
+cd docker-app
+```
+
+---
+
+# 🚀 Run Application Locally
+
+## Build Docker Image
+
+```bash
+docker build -t flask-demo .
+```
+
+---
+
+## Run Docker Container
+
+```bash
+docker run -d -p 5000:5000 --name flask-container flask-demo
+```
+
+---
+
+# 🌐 Access Application
+
+Open browser:
+
+```text
+http://localhost:5000
+```
+
+Expected Output:
+
+```text
+Jenkins Docker Pipeline Working!
+```
+
+---
+
+# 🚀 Docker Compose Setup
+
+## Start Multi-container Application
+
+```bash
+docker compose up -d
+```
+
+---
+
+## Verify Running Containers
+
+```bash
+docker ps
+```
+
+---
+
+## Stop Compose Application
+
+```bash
+docker compose down
+```
+
+---
+
+# 🚀 Amazon ECR Setup
+
+## Create ECR Repository
+
+```bash
+aws ecr create-repository \
+  --repository-name flask-demo \
+  --region ap-south-1
+```
+
+---
+
+# 🔐 Authenticate Docker to ECR
+
+```bash
+aws ecr get-login-password --region ap-south-1 | \
+docker login \
+--username AWS \
+--password-stdin <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com
+```
+
+Replace:
+
+```text
+<ACCOUNT_ID>
+```
+
+with your AWS account ID.
+
+---
+
+# 🚀 Tag Docker Image
+
+```bash
+docker tag flask-demo:latest \
+<ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/flask-demo:v1
+```
+
+---
+
+# 🚀 Push Docker Image to ECR
+
+```bash
+docker push \
+<ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/flask-demo:v1
+```
+
+---
+
+# 🚀 Pull Docker Image from ECR
+
+```bash
+docker pull \
+<ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/flask-demo:v1
+```
+
+---
+
+# 🚀 Jenkins Pipeline
+
+Current pipeline stages:
+
+- Checkout Code
+- Build Docker Image
+- Authenticate to ECR
+- Tag Docker Image
+- Push Docker Image
+- Cleanup Docker Resources
+
+---
+
+# 🧠 Image Versioning Strategy
+
+Implemented image versioning using:
+
+```text
+BUILD_NUMBER
+```
+
+Example:
+
+```text
+flask-demo:1
+flask-demo:2
+flask-demo:3
+```
+
+Benefits:
+
+- Deployment traceability
+- Rollback support
+- Immutable deployments
+
+---
+
+# 🛠️ Common Docker Commands
+
+## List Images
+
+```bash
+docker images
+```
+
+---
+
+## List Containers
+
+```bash
+docker ps -a
+```
+
+---
+
+## View Container Logs
+
+```bash
+docker logs <container-name>
+```
+
+---
+
+## Stop Container
+
+```bash
+docker stop <container-name>
+```
+
+---
+
+## Remove Container
+
+```bash
+docker rm <container-name>
+```
+
+---
+
+## Remove Image
+
+```bash
+docker rmi <image-name>
+```
+
+---
+
+# 🧠 Important Learnings
+
+This project helped understand:
+
+- Containerization concepts
+- Image lifecycle management
+- Docker networking
+- Docker volumes
+- CI/CD pipeline automation
+- Registry authentication
+- ECR integration
+- Docker Compose orchestration
+- Immutable deployment concepts
+
+---
+
+# ⚠️ Known Limitations
+
+Current limitations:
+
+- Local deployment only
+- No ECS/EKS deployment yet
+- No HTTPS
+- No monitoring stack
+- No Kubernetes integration yet
+
+---
+
+# 🚀 Future Enhancements
+
+Planned improvements:
+
+- Multi-stage Docker builds
+- Jenkins shared libraries
+- ECS deployment
+- EKS deployment
+- Blue/Green deployments
+- CloudWatch monitoring
+- GitHub Actions
+- Kubernetes manifests
+- Helm charts
+
+---
+
+# 🔐 Security Considerations
+
+Implemented:
+
+- Private Amazon ECR repository
+- IAM-based AWS authentication
+- .gitignore for sensitive files
+
+Recommendations for production:
+
+- Avoid hardcoded secrets
+- Use AWS Secrets Manager
+- Use image vulnerability scanning
+- Implement least privilege IAM
+
+---
+
+# 👨‍💻 Author
+
+Nitin Meshram
+
+DevOps & Cloud Engineer
+
+---
+
+# 📌 Final Note
+
+This repository is focused on learning production-style DevOps workflows using Docker, Jenkins, and AWS.
+
+The objective is not only to run containers locally but also to understand:
+
+- CI/CD automation
+- image versioning
+- container lifecycle
+- deployment workflows
+- registry management
+- cloud-native concepts
+
+This project will continue evolving toward ECS, EKS, and Kubernetes-based deployments.
